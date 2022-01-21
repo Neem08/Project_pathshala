@@ -1,1 +1,1 @@
-# Uncriptrookie_Mingwx86
+# Unscriptrookie_Mingwx86
