@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/ae8f1db1af.js" crossorigin="anonymous"></script>
+    <title>C++ courses</title>
+    <style>
+     .row{
+	display: flex;
+	flex-wrap: wrap;
+}
+ul{
+	list-style: none;
+}
+.footer{
+	background-color: rgb(69, 103 , 163);
+    padding: 70px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+p{
+  color: #ffffff;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #e91e63;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #ffffff;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links a{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background-color: rgba(255,255,255,0.2);
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #ffffff;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+	color: #24262b;
+	background-color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+}
+        
+        a:hover
+{
+    color: aqua;
+    text-decoration: none;
+
+}
+a:link {
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
+}
+       .flex-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center;
+background-color: #EAF4FE;
+    /* margin: 26px;
+    padding: 12px; */
+    margin-top: -3vh;
+    height: 600px;
+  
+    /* border: 2px solid black; */
+  }
+  
+  .flex-item-left {
+    background: transparent;
+    padding: 18px;
+    flex: 50%;
+    margin: 3px;
+    /* border: 2px solid black; */
+  }
+  
+  .flex-item-right {
+    background: transparent;
+    padding: 18px;
+    margin: 3px;
+    /* border: 2px solid black; */
+    flex: 50%;
+  }
+  
+  @media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  
+  }
+    </style>
+  </head>
+  <body style="width: 100%;">
+    <nav class="navbar navbar-expand-lg navbar-light " >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/ide" style="color: #0051ed; font-weight: bold; ">Practice</a>
+          <a class="navbar-brand" href="    http://127.0.0.1:5500/index.html" style="color: #0051ed; font-weight: bold; ">Quiz</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item" style="margin-left: 20vh; margin-top: 1vh; ">
+                <input type="text"  style="border-radius: 5px; margin-top: 2vh; height: 5vh; border:1.5px solid grey" placeholder="Search Courses">
+              </li>
+              <li class="nav-item  ml-auto" >
+                <svg width="120" height="45" viewBox="0 0 148 45" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: 25vh; margin-top:2vh; " >
+                    <path d="M11.8906 35.3984C13.7891 35.3984 14.8672 34.5078 15.4297 32.3984L21.6875 10.5312H21.9219L28.1797 32.3984C28.7656 34.5312 29.7969 35.3984 31.7422 35.3984C33.5938 35.3984 34.625 34.4844 35.1875 32.3984L42.7109 5.42188C42.9219 4.64844 43.0156 4.01562 43.0156 3.5C43.0156 1.83594 41.8438 0.78125 40.0391 0.78125C38.4688 0.78125 37.4844 1.625 37.1094 3.3125L31.4609 26.7969H31.2734L25.0625 3.57031C24.5469 1.67188 23.5391 0.78125 21.8281 0.78125C20.0469 0.78125 19.0625 1.625 18.5469 3.64062L12.3359 26.7969H12.1484L6.5 3.3125C6.125 1.64844 5.14062 0.78125 3.57031 0.78125C1.76562 0.78125 0.59375 1.83594 0.59375 3.5C0.59375 4.03906 0.6875 4.67188 0.898438 5.42188L8.39844 32.375C8.98438 34.4844 10.0156 35.3984 11.8906 35.3984ZM55.3203 35.4922C60.0547 35.4922 63.7578 33.6406 65.3984 30.4766C65.6562 29.9609 65.7969 29.4453 65.7969 29C65.7969 27.5938 64.7656 26.75 63.4531 26.75C62.6328 26.75 62.0938 27.0078 61.4844 27.6875C59.6094 30.0781 57.8984 30.9922 55.2734 30.9922C51.4766 30.9922 49.0625 28.3203 49.0625 24.1719V23.9844H63.7109C65.4453 23.9844 66.4297 22.9531 66.4297 21.2188C66.4297 14.4688 61.7891 9.64062 54.9922 9.64062C47.8203 9.64062 43.25 14.75 43.25 22.6719C43.25 30.7344 47.7266 35.4922 55.3203 35.4922ZM49.1094 20.1406C49.3438 16.5781 51.7344 14.1641 55.0156 14.1641C58.2969 14.1641 60.5938 16.5312 60.7109 20.1406H49.1094ZM101.188 6.66406C103.016 6.66406 104.445 5.25781 104.445 3.5C104.445 1.71875 103.016 0.335938 101.188 0.335938C99.3828 0.335938 97.9531 1.71875 97.9531 3.5C97.9531 5.25781 99.3828 6.66406 101.188 6.66406ZM101.188 35.4688C102.969 35.4688 104.117 34.2969 104.117 32.3984V12.7578C104.117 10.8594 102.969 9.66406 101.188 9.66406C99.4062 9.66406 98.2812 10.8594 98.2812 12.7344V32.3984C98.2812 34.2969 99.4062 35.4688 101.188 35.4688ZM113.562 35.4688C115.297 35.4688 116.469 34.3906 116.469 32.4219V14.6562H119.516C120.805 14.6562 121.742 13.8594 121.742 12.4297C121.742 11.0703 120.805 10.2266 119.516 10.2266H116.375V8.28125C116.375 6.19531 117.242 5.25781 119.375 5.21094C119.891 5.1875 120.289 5.14062 120.664 5.04688C121.531 4.78906 121.953 4.25 121.953 3.35938C121.953 1.90625 120.57 0.921875 117.477 0.921875C113 0.945312 110.633 3.17188 110.633 8.02344V10.2266H109.086C107.773 10.2266 106.836 11.0703 106.836 12.4297C106.836 13.8594 107.773 14.6562 109.086 14.6562H110.633V32.4219C110.633 34.3906 111.805 35.4688 113.562 35.4688ZM128.75 44.2344C133.719 44.2344 136.297 42.0781 138.547 35.8906L146.727 14C146.938 13.4375 147.055 12.7812 147.055 12.3125C147.055 10.7656 145.883 9.66406 144.219 9.66406C142.742 9.66406 141.898 10.3438 141.406 11.9375L135.477 30.0312H135.383L129.453 11.9609C128.961 10.3203 128.141 9.66406 126.664 9.66406C124.953 9.66406 123.664 10.7891 123.664 12.3828C123.664 12.8516 123.781 13.4609 123.992 14.0469L132.125 35.4453L131.703 36.6641C130.836 38.8438 129.477 39.5234 128.164 39.5234C127.625 39.5234 127.391 39.5 126.898 39.5C125.539 39.5 124.695 40.2734 124.695 41.4688C124.695 43.25 126.125 44.2344 128.75 44.2344Z" fill="black"/>
+                    <path d="M73.2031 35.4688C74.8906 35.4688 76.0859 34.4141 76.0859 32.5391V30.7578H76.2031C77.6797 33.6406 80.4688 35.3984 84.1016 35.3984C90.4062 35.3984 94.3672 30.5234 94.3672 22.5781C94.3672 14.6328 90.3828 9.73438 84.125 9.73438C80.5859 9.73438 77.7734 11.5156 76.3438 14.4219H76.2031V3.78125C76.2031 1.8125 75.0078 0.710938 73.2969 0.710938C71.5859 0.710938 70.3672 1.8125 70.3672 3.78125V32.5391C70.3672 34.4375 71.5156 35.4688 73.2031 35.4688ZM82.3203 30.6172C78.7109 30.6172 76.1797 27.4531 76.1797 22.5781C76.1797 17.75 78.7109 14.5391 82.3203 14.5391C86.0469 14.5391 88.3906 17.6562 88.3906 22.5781C88.3906 27.5234 86.0469 30.6172 82.3203 30.6172Z" fill="#0051ED"/>
+                    </svg>
+              </li>
+              <div class="dropdown" style="margin-left: 200px; margin-top: 2vh;">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-bullhorn" style="color: #0051ed; font-size: 20px;">Alerts</i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li> <% for(var i=0;i<link.length;i++){  %>
+                    <div class="spinner-grow text-success" role="status" >
+                      <span class="visually-hidden">Loading...</span>
+                    </div><h2><%= link[i] %></h2>
+                    <% } %></li>
+                  
+                </ul>
+              </div>
+              <li class="nav-item  ml-auto" style="margin-top: 2vh; font-weight: bold;" >
+                
+                <a class="nav-link " href="#" style="margin-left: 5vh; color: #0051ed;" class="gradient-border" type="button"  data-bs-toggle="modal" >Welcome User!</a>
+              </li>
+              <li class="nav-item ml-auto" style="margin-top: 2vh; font-weight: bold;">
+                <a class="nav-link" href="/logout"  style="color: #0051ed;">Log Out </a>
+              </li>
+            </ul>
+            <span class="navbar-text">
+       
+            </span>
+          </div>
+        </div>
+      </nav>
+      <hr>
+      <div class="co" style="background-color: #EAF4FE; margin-top: -2.5vh;">
+        <h2 style="text-align: center; color: black; font-weight: bold; padding-top: 5px;">C++ courses</h2>
+      <% for(var i=0;i<he1.length;i++){ %>
+        <div class="ss" style="margin-left: 38vh;">
+        <video width="800" height="500" controls="controls autoplay">
+
+    
+          <source src="upload1/<%=he1[i] %>" type="video/mp4" />
+         
+        </div>
+        </video>
+        <div class="but-pad">
+            <div class="btn-group" style="margin-left: 45vh; margin-top: 4vh;">
+                <a href="<%=re%>" data-hash="2"><button >   <i class="fa fa-download" style="font-size:30px;"> Resources</i></button></a> 
+                 
+   
+                 </div>
+               </div>
+   
+           <% } %>
+        <br>
+        <br>
+      </div>
+        <footer class="footer">
+            <div class="container">
+              <div class="row">
+                <div class="footer-col">
+                
+            
+                  <h4>Courses</h4>
+                  <ul>
+                    <li><a href="/videof">WEB Development</a></li>
+                    <li><a href="/video1">C++ </a></li>
+                    <li><a href="/video2">DSA IN JAVA</a></li>
+                    <br>
+                    <br>
+                    <br><br><br>
+                    <li><img src="css/Webify.png" width="110px" height="40px" alt=""></li>
+                    
+                  </ul>
+                </div>
+                <div class="footer-col">
+                  <h4>Features</h4>
+                  <ul>
+                    <li><a href="/ide">Web IDE</a></li>
+                    <li><a href="http://localhost:800/">Discussion Forum</a></li>
+                    <li><a href="#">Live Streaming</a></li>
+                    <li><a href="https://hidden-island-71466.herokuapp.com/">Daily Updates</a></li>
+                    <li><a href="/video1">Resources Access</a></li>
+                    <li><a href="#">Quiz Section</a></li>
+                  </ul>
+                </div>
+                <div class="footer-col">
+                  <h4>Additional Info</h4>
+                  <ul>
+                    <li><a href="#">T&C</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                  </ul>
+                </div>
+                <div class="footer-col">
+                  <h4>follow us</h4>
+                  <div class="social-links">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <p>Webify is an educational website that will help you become a full-stack web developer with courses tailored for anyone and everyone - a beginner can start learning from scratch & a novice and brush up on their skills.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+         </footer>
+         
+            <!-- Optional JavaScript; choose one of the two! -->
+        
+            <!-- Option 1: Bootstrap Bundle with Popper -->
+            <script src="https://kit.fontawesome.com/ae8f1db1af.js" crossorigin="anonymous"></script>
+
+      </body>
+      </html>

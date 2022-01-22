@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="css/home.css">
+  
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
+    <style media="screen">
+        body{
+          font-style: Times;
+        }
+        img{
+  
+        }
+        .center1{
+          width:400px !important;
+          height: auto;
+        }
+        .center2{
+          width:400px !important;
+          height: auto;
+        }
+  
+      </style>
+<body>
+<section>
+  <div class="heading" >
+    <h1 style="text-align: center;">Our features</h1>
+  </div>
+
+  <div class="container-fluid ">
+  <div class="row polaroid1">
+    <div class="col-sm-6">
+        <% item.forEach(function(image) { %>
+      <img src="data:image/<%=image.img.contentType%>;base64,
+      <%=image.img.data.toString('base64')%>"   class="center1 center" style="margin-top: -11vh;">
+      <% }) %>
+    </div>
+    <div class="col-sm-6 text1" ">
+      <h2 style="color: rgb(21,75,196);">Health card</h2>
+      <br>
+      <p >
+        <strong>"Health is an asset that helps to maintain the balance of life and a sound mind"</strong>  . Hereby to comply with this ideology we will be providing a health card which will act as a saviour in case of any emergency situation. The card will contain all the essential medical details of the patient such as blood group and previous comorbidities which will help in saving time in the procedure of the admission of the patient in the hospital
+      </p>
+       <button type="button" class="btn btn-success "name="button">Get your Qr-card</button>
+    </div>
+  </div>
+  <div class="row polaroid2">
+    <div class="col-sm-6 text2">
+      <h2 style="color: rgb(21,75,196);">Ambulance Service</h2>
+      <br>
+      <p >
+        Now-a-days groceries can be delivered in 15 minutes so why can't we get an ambulance to a person in need in less than 15 minutes? We at i-Care are here to make this possible for our users when they are in an emergency situation. Many people don't value health till the sickness arrives but when there is an urgent need of ambulance they are baffled by the situation and start to panic not knowing what to do but with the ambulance service provided by us at i-Care users can relax and avoid such frantic circumstances.
+      </p>
+       <button type="button" class="btn btn-success "name="button">Book an Ambulance</button>
+    </div>
+    <div class="col-sm-6" style=" width:600;">
+        <img src="image/3824022.jpg" alt=""  class="center center2" style="margin-top: 1vh">
+    </div>
+  </div>
+  <div class="row polaroid3" style="margin-top: 7%;">
+    <div class="col-sm-6" >
+      <img src="image/book.png" alt="" class="center " style="margin-top: 7vh">
+    </div>
+    <div class="col-sm-6 text3">
+      <h2 style="color: rgb(21,75,196);">Online Consultation & Appointment booking</h2>
+      <br>
+      <p >
+    <strong>"Medicines prevent the diseases but doctors are the onee who cure them"</strong>  . Keeping this philosophy in mind i-Care provides Online Consultation with the specialized doctors in each and every field of medicine. Clinics can act as a hotspot for public gathering (crowding) which is not favourable keeping the ongoing pandemic in mind and therefore we have reverted to online booking of slot with the doctor.
+        </p>
+       <button type="button" class="btn btn-success "name="button">Book your slot</button>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+  </body>
+</html>
