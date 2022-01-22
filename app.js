@@ -4,6 +4,8 @@ const app=express();
 const bodyparser=require("body-parser");
 const ejs=require("ejs")
 const mongoose=require("mongoose");
+var stripe=require('stripe')('sk_test_51KKGYLSJY5jGZ1U6CB3P2pYYDzQd9CLtQfRrq0QfXIy7JBlGif4rpWih0XOJN5k2kL9dhT0vq3Rzr9KHpCLUrw9900Qm1SC8CI');
+var Publishable_Key = 'pk_test_51KKGYLSJY5jGZ1U6Faj9ROrEStt3NI2qncthXP5P8AduYGeOp3Me8N1iVWhfgErk6t6hzvpkheCtM7neFuuClYF600xTSUEeyr'
 const multer=require("multer");
 const path=require("path")
 const fs = require('fs');
@@ -39,9 +41,25 @@ const userSchema= new mongoose.Schema({
    
 
 })
+var verSchema={
+	email:String,
+	flag:Boolean,
+}
+var imageSchema = new mongoose.Schema({
+    name: String,
+    desc: String,
+	
+    img:
+    {
+        data: Buffer,
+        contentType: String
+    }
+});
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findorcreate);
 const User = new mongoose.model("User",userSchema);
+const Verify=mongoose.model('Verify',verSchema);
+const image=mongoose.model('image',imageSchema);
 passport.use(User.createStrategy());
 passport.serializeUser(function(user, done) {
     done(null, user.id);
@@ -52,6 +70,15 @@ passport.serializeUser(function(user, done) {
       done(err, user);
     });
   })
+  var storage5=multer.diskStorage({
+	destination:(req,file,cb)=>{
+		cb(null,'uploads')
+	},
+	filename:(req,file,cb)=>{
+cb(null,file.fieldname+"-"+Date.now())
+	}
+});
+var upload=multer({storage: storage5})
 // userSchema.plugin(encrypt, {secret:process.env.SECRET,encryptedFields:["password"] });
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
@@ -77,6 +104,15 @@ var das=[];
 app.get("/",(req,res)=>{
     res.render("home" ,{link:zl ,he:imgArray});
 })
+app.get("/teacherup",(req,res)=>{
+	image.find({},(er,cd)=>{
+		if(er) console.log(er)
+		else{
+			res.render("teacherup",{item:cd})
+		}
+	})
+})
+
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));
   app.get('/auth/google/home1', 
@@ -89,6 +125,19 @@ app.get('/auth/google',
     res.render("home1",{link:zl ,he:imgArray})
   })
 
+  
+app.post('/payment', function(req, res){
+  
+    // Moreover you can take more details from user
+    res.redirect('/videof');
+})
+  
+app.post('/payment2', function(req, res){
+  
+    // Moreover you can take more details from user
+    res.redirect('/videof');
+})
+  
 app.get("/registe",(req,res)=>{
     res.render("registlog")
 })
@@ -123,8 +172,77 @@ User.register({username:req.body.username},req.body.password,(er,fd)=>{
 })
   
 })
+app.post("/pic",upload.single('image'),(req,res,next)=>{
+	var pbj=new image({
+		name:req.body.name,
+		desc:req.body.desc,
+		flag:false,
+		img:{
+			data:fs.readFileSync(path.join(__dirname+'/uploads/'+req.file.filename)),
+		contentType:'image/png'
+		}
+	})
+	// pbj.save();
+	pbj.save();
+	var post=new Verify({
+		email:req.body.name,
+		flag:false,
+	})
+	post.save();
+	res.redirect("/teacherup");
+})
 app.get("/admin",(req,res)=>{
     res.render("admin")
+})
+app.get('/dash',(req,res)=>{
+	image.find({},(er,cd)=>{
+		if(er) console.log(er)
+		else{
+			res.render("dash",{item:cd})
+		}
+	})
+})
+app.post('/check',(req,res)=>{
+	const name=req.body.name;
+	Verify.findOne({email:name},(er,cd)=>{
+		if(er) console.log(er)
+		else{
+			cd.flag=true;
+			cd.save();
+			res.redirect('/dash')
+		}
+	})
+
+})
+app.post('/teacher',(req,res)=>{
+	const email=req.body.email;
+	const password=req.body.password;
+	console.log(email);
+	Verify.findOne({email:email},(err,data)=>{
+		if(err){
+			console.log(err);
+		}
+		else{
+			console.log(data.flag)
+			if(data.flag){
+				// res.redirect('/up');
+				console.log('verified')
+                res.redirect('/admin')
+			}else{
+				console.log("not verified");
+				// res.render('/teacher')
+			}
+		// 	if(data.flag==false){
+		// 	res.redirect('/tl');
+		// }else{
+		// 	res.redirect('/book');
+
+		// }
+	}
+})
+})
+app.get('/instlogin',(req,res)=>{
+	res.render('instlogin')
 })
 app.post("/getlink",(req,res)=>{
     const a=req.body.zoom;
@@ -190,7 +308,7 @@ res.redirect("/dashboard")
 })
 app.get("/video",(req,res)=>{
     if(req.isAuthenticated()){
-        res.render("video" ,{he:imgArray,he1:imgArray1,he2:imgArray2,link:zl})
+        res.render("video" ,{he:imgArray,he1:imgArray1,he2:imgArray2,link:zl,key:Publishable_Key})
     }else{
         res.redirect("/")
     }

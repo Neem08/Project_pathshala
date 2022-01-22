@@ -342,7 +342,21 @@ background-color: #EAF4FE;
             <source src="#" type="video/mp4" />
           </video> -->
          <!-- </div> -->
-         <h3 style="margin-left: 20vh; margin-top: 110px;"> <a href="/videof">View More</a> </h3>
+         
+         <form action="payment" method="POST">
+          <script 
+          src="//checkout.stripe.com/v2/checkout.js"
+          class="stripe-button"
+          data-key="<%= key %>"
+          data-amount="250000"
+          data-currency="inr"
+          data-name="Frontend course"
+          data-description="Development"
+          data-locale="auto" >
+        </script>
+         
+      
+      </form>
         </div>
         </div>
  <br>
@@ -367,7 +381,21 @@ background-color: #EAF4FE;
         <source src="#" type="video/mp4" />
       </video> -->
      <!-- </div> -->
-     <h3 style="margin-left: 20vh; margin-top: 110px;"> <a href="/video1">View More</a> </h3>
+       
+     <form action="payment2" method="POST">
+      <script 
+      src="//checkout.stripe.com/v2/checkout.js"
+      class="stripe-button"
+      data-key="<%= key %>"
+      data-amount="250000"
+      data-currency="inr"
+      data-name="Backend course"
+      data-description="Development"
+      data-locale="auto" >
+    </script>
+     
+  
+  </form>
     </div>
     </div>
     <br>
@@ -413,7 +441,7 @@ background-color: #EAF4FE;
           <br>
           <br>
           <br><br><br>
-          <li><img src="css/Webify.png" width="110px" height="40px" alt=""></li>
+          <!-- <li><img src="css/Webify.png" width="110px" height="40px" alt=""></li> -->
           
         </ul>
       </div>
