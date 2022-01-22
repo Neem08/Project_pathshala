@@ -41,8 +41,13 @@ const userSchema= new mongoose.Schema({
    
 
 })
+const dashboardSchema={
+    username:String,
+    count:Number,
+}
 var verSchema={
 	email:String,
+    desc:String,
 	flag:Boolean,
 }
 var imageSchema = new mongoose.Schema({
@@ -55,6 +60,7 @@ var imageSchema = new mongoose.Schema({
         contentType: String
     }
 });
+const Dashboard=mongoose.model("Dashboard",dashboardSchema);
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findorcreate);
 const User = new mongoose.model("User",userSchema);
@@ -124,18 +130,52 @@ app.get('/auth/google',
   app.get("/home1",(req,res)=>{
     res.render("home1",{link:zl ,he:imgArray})
   })
+app.get('/verified',(req,res)=>{
+    Verify.find({flag:true},(er,cd)=>{
+        if(er) console.log(er)
+        else{
+            
+            res.render("verified",{data:cd})
+            
+        }
+    })
 
-  
+
+    // res.render("verified")
+})
+  var email1="";
 app.post('/payment', function(req, res){
   
     // Moreover you can take more details from user
-    res.redirect('/videof');
+    var obj=new Dashboard({
+        username:email1,
+        count:0
+    })
+   
+obj.save();
+  res.redirect('/videof')
 })
   
 app.post('/payment2', function(req, res){
   
     // Moreover you can take more details from user
     res.redirect('/videof');
+})
+var pr="";
+app.post('/done',(req,res)=>{
+    Dashboard.findOne({username:email},(err,doc)=>{
+        if(err){
+            console.log(err);
+        }else{
+            if(doc){
+                doc.count=doc.count+1;
+                pr=doc.count;
+                doc.save();
+                res.redirect("/videof");
+            }
+        }
+    })
+    
 })
   
 app.get("/registe",(req,res)=>{
@@ -186,6 +226,7 @@ app.post("/pic",upload.single('image'),(req,res,next)=>{
 	pbj.save();
 	var post=new Verify({
 		email:req.body.name,
+        desc:"",
 		flag:false,
 	})
 	post.save();
@@ -209,13 +250,20 @@ app.post('/check',(req,res)=>{
 		else{
 			cd.flag=true;
 			cd.save();
-			res.redirect('/dash')
+			// res.redirect('/dash')
 		}
 	})
+    image.findOneAndDelete({email:name},(er,cd)=>{
+if(er) console.log(Er);
+else{
+    res.redirect('/dash')
+}
+    })
 
 })
+var email=""
 app.post('/teacher',(req,res)=>{
-	const email=req.body.email;
+	 email=req.body.email;
 	const password=req.body.password;
 	console.log(email);
 	Verify.findOne({email:email},(err,data)=>{
@@ -261,6 +309,7 @@ app.post("/login",(req,res)=>{
         username:req.body.username,
         pass:req.body.password
     })
+    email1=req.body.username;
     req.login(user,(er)=>{
         if(er){
         console.log(er);
@@ -315,7 +364,7 @@ app.get("/video",(req,res)=>{
 })
 app.get("/videof",(req,res)=>{
     if(req.isAuthenticated()){
-        res.render("video1" ,{he:imgArray,link:zl,tt:title1})
+        res.render("video1" ,{he:imgArray,link:zl,tt:title1,h:pr})
     }else{
         res.redirect("/")
     }
@@ -341,6 +390,9 @@ app.get("/ide",(req,res)=>{
         res.redirect("/")
     }
 })
+app.get("/gyan",(req,res)=>{
+    res.render("gyan")
+  })
 app.get("/red",(req,res)=>{
     if(req.isAuthenticated()){
         res.render("secrets")
@@ -423,8 +475,18 @@ app.post('/upload',upload,function(req,res,next){
    app.post('/upload1',upload1,function(req,res,next){
     var success=req.file.fieldname+"uploaded succesfuly";
     var b=req.body.title;
+    var d=req.body.desc;
+    console.log(b)
     title1.push(b);
-    res.redirect("/admin")
+    Verify.findOneAndUpdate({email:email},{$set: { desc:d}}, {new: true}, (err, doc)=>{
+        if(err) console.log(err);
+        else{
+          res.redirect('/admin')
+            // cd.save();
+        } 
+    })
+   
+  
    })
    fs.readdir(directoryPath1, function (err, files) {
        //handling error
@@ -442,6 +504,14 @@ app.post('/upload',upload,function(req,res,next){
    
        });
    });
+   app.post('/upo',(req,res)=>{
+       Verify.find({_id:req.body.ui},(er,cd)=>{
+           if(er) console.log(er);
+           else{
+               res.render("details",{data:cd})
+           }
+       })
+   })
    app.post('/upload2',upload2,function(req,res,next){
     var success=req.file.fieldname+"uploaded succesfuly";
     res.redirect("/admin")
